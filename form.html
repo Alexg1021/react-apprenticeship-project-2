@@ -116,18 +116,19 @@
             </div>
             <div class="col-sm-12 col-md-8 order-md-1">
                 <h4>Billing Address</h4>
-                <form action="">
+                <form action="" novalidate class="needs-validation">
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
                                 <label for="firstname">First Name</label>
-                                <input type="text" name="firstname"  id="firstname" value="" class="form-control">
+                                <input type="text" name="firstname"  id="firstname" value="" class="form-control" required>
+                                <div class="invalid-feedback">First name is required</div>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
                                 <label for="lastname">Last Name</label>
-                                <input type="text" value="" name="lastname" id="lastname" class="form-control">
+                                <input type="text" value="" name="lastname" id="lastname" class="form-control" required>
                             </div>
                         </div>
                     </div>
@@ -138,13 +139,13 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text">@</div>
                             </div>  
-                            <input type="text" value="" name="username" id="username" class="form-control">              
+                            <input type="text" value="" name="username" id="username" class="form-control" required>              
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="email">Email <span class="text-muted">(Optional)</span></label>
-                        <input type="email" class="form-control" value="" name="email" id="email" placeholder="user@email.com">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" value="" name="email" id="email" placeholder="user@email.com" required>
                     </div>
 
                     <div class="form-group">
@@ -199,17 +200,17 @@
                     <hr>
 
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="credit" name="paymentOption" value="" checked>
+                        <input type="radio" class="custom-control-input" id="credit" name="paymentOption" value="" checked required>
                         <label for="credit" class="custom-control-label">Credit Card</label>
                     </div>
 
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="debit" name="paymentOption" value="">
+                        <input type="radio" class="custom-control-input" id="debit" name="paymentOption" value="" required>
                         <label for="debit" class="custom-control-label">Debit Card</label>
                     </div>
 
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="paypal" name="paymentOption" value="">
+                        <input type="radio" class="custom-control-input" id="paypal" name="paymentOption" value="" required>
                         <label for="paypal" class="custom-control-label">Paypal</label>
                     </div>
 
@@ -217,14 +218,14 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="cc-name">Name on card</label>
-                                <input type="text" name="cc-name" id="cc-name" class="form-control" value="">
+                                <input type="text" name="cc-name" id="cc-name" class="form-control" value="" required>
                                 <small class="text-muted">Full name as displayed on card</small>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
                                 <label for="cc-number">Credit card number</label>
-                                <input type="text" class="form-control" id="cc-number" name="cc-number" value="">
+                                <input type="text" class="form-control" id="cc-number" name="cc-number" value="" required>
                             </div>
                         </div>
                     </div>
@@ -233,13 +234,13 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="expiration">Expiration</label>
-                                <input type="text" name="expiration" id="expiration" class="form-control" value="">
+                                <input type="text" name="expiration" id="expiration" class="form-control" value="" required>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="cvv">CVV</label>
-                                <input type="text" name="cvv" id="cvv" class="form-control" value="">
+                                <input type="text" name="cvv" id="cvv" class="form-control" value="" required>
                             </div>
                         </div>
                     </div>
@@ -270,6 +271,18 @@
     
 
     <!-- Optional JavaScript; choose one of the two! -->
+    <script>
+        var checkoutForm = document.querySelector('.needs-validation');
+
+        checkoutForm.addEventListener('submit', function (event) {
+            if (checkoutForm.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            checkoutForm.classList.add('was-validated');
+        })
+
+    </script>
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
